@@ -150,6 +150,7 @@ def modificar_producto():
     conexion = sqlite3.connect("kiosko.db")
     cursor = conexion.cursor()
     try:
+        listar_productos()
         id_prod_mod = int(input("Ingrese el id del producto a modificar: "))
         cursor.execute("SELECT * FROM productos WHERE id_producto == ? AND estado == 1", (id_prod_mod,))
         producto = cursor.fetchone()
@@ -237,6 +238,7 @@ def desactivar_productos():
     conexion = sqlite3.connect("kiosko.db")
     cursor = conexion.cursor()
     try:
+        listar_productos()
         id_prod_des = int(input("Ingrese el id del producto a desactivar: "))
         cursor.execute("SELECT * FROM productos WHERE id_producto == ? AND estado == 1", (id_prod_des,))
         producto = cursor.fetchone()
@@ -314,7 +316,9 @@ def agregar_proveedor():
 def modificar_proveedor():
     conexion = sqlite3.connect("kiosko.db")
     cursor = conexion.cursor()
+    
     try:
+        listar_proveedores()
         id_prov_mod = int(input("Ingrese el id del proveedor a modificar: "))
         cursor.execute("SELECT * FROM proveedores WHERE id_proveedor == ? AND estado == 1", (id_prov_mod,))
         proveedor = cursor.fetchone()
@@ -374,7 +378,9 @@ def modificar_proveedor():
 def desactivar_proveedor():
     conexion = sqlite3.connect("kiosko.db")
     cursor = conexion.cursor()
+    
     try:
+        listar_proveedores()
         id_prov_des = int(input("Ingrese el id del proveedor a desactivar: "))
         cursor.execute("SELECT * FROM proveedores WHERE id_proveedor == ? AND estado == 1", (id_prov_des,))
         proveedor = cursor.fetchone()
